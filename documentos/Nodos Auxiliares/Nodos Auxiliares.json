@@ -1,0 +1,451 @@
+{
+  "name": "Nodos Auxiliares",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## AUXILIARES\n\nUn nodo auxiliar es una herramienta puntual que permite modificar los datos que recibimos entre una conexión u otra.\n\nExisten muchos nodos pero los más importantes son: \n\nCode: Permite ejecutar código personalizado en JavaScript o Python dentro del flujo de trabajo.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSet (Edit Fields): Permite renombrar variables.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHTTP Request: Envía solicitudes HTTP a otras aplicaciones o servicios web. Te permite interactuar con APIs externas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIf: Evalúa una condición y bifurca el flujo hacia dos caminos: uno si la conexión es verdadera y otro si es falsa.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSwitch: Permite redirigir el flujo de trabajo por diferentes ramas según las reglas que definas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFilter: Permite filtrar solamente los datos que nos interesan.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSplit Out: Divide un conjunto de datos en elementos individuales para procesarlos uno por uno.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAggregate: Toma múltiples elementos y los combina en uno solo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMerge: Combina datos de múltiples flujos en uno solo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLoop Over Items: Permite ejecutar una serie de acciones repetidamente sobre un conjunto de elementos.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLimit: Restringe el número de elementos que pasan a través de un flujo de trabajo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWait: Pausa la ejecución del flujo hasta que se cumpla una condición o pase un tiempo definido.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoOp: No realiza ninguna operación, solo pasa los datos al siguiente nodo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRespond to Webhook: Envía una respuesta personalizada a la petición HTTP que inició el flujo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSummarize: Calcula métricas rápidas como totales, promedios, mínimos o máximos a partir de los datos.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMove Binary Data: Convierte datos entre formato binario y JSON para trabajar con archivos o APIs de texto.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRemove Duplicates: Elimina ítems duplicados dentro de un flujo de trabajo, comparando todos los campos o solo algunos específicos. También puede evitar procesar datos repetidos entre ejecuciones diferentes.\n",
+        "height": 4252,
+        "width": 720,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -112,
+        448
+      ],
+      "id": "4469ab6f-0e3c-4359-9989-27e10ecaff2a",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Genera 1 item con un array \"pedidos\"\nreturn [{\n  json: {\n    cliente: 'ACME Corp',\n    pedidos: [\n      { id: 101, importe: 99.99, estado: 'pendiente' },\n      { id: 102, importe: 149.50, estado: 'pagado' },\n      { id: 103, importe: 79.00,  estado: 'pendiente' },\n    ],\n  },\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        192,
+        656
+      ],
+      "id": "aeae58fb-d39f-4f03-8322-540a3bcc69dc",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4f17cb7b-2c92-408c-838a-dd0c1e35c078",
+              "leftValue": "={{ $json.pAU }}",
+              "rightValue": "104",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        192,
+        1856
+      ],
+      "id": "6679e409-400e-4495-96bf-ea169a0b1318",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        192,
+        2304
+      ],
+      "id": "f37a8439-4a1b-4824-8397-b3297e31e21f",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "pedidos",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        192,
+        2080
+      ],
+      "id": "2af496b9-6373-473f-a5ce-7991a9280205",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e6277da0-afeb-4eb1-8469-19a6ce0c9ef4",
+              "leftValue": "={{ $json.pAU }}",
+              "rightValue": "102",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        192,
+        1328
+      ],
+      "id": "a9fe823b-0994-486f-8e8b-c6acb53adf4d",
+      "name": "If"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        192,
+        2544
+      ],
+      "id": "3e0ba09c-10b9-4b98-a004-b4b9639d7334",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        192,
+        3072
+      ],
+      "id": "d43eaa6f-ec06-412b-8f0d-6c8f445509a1",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "url": " https://cdn2.thecatapi.com/images/MjA1NzI1OQ.jpg",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        192,
+        1088
+      ],
+      "id": "053d5c96-1f19-43d6-b966-27ac3df52dd5",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "maxItems": 3
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        192,
+        2816
+      ],
+      "id": "3561da0e-97e8-40bf-b51f-8595e6aebdc2",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "=",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "f790ad73-8a05-4305-a912-83ae6fbd41cb"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1f97af1b-d1e5-48cb-81d7-f3b88f988d75",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8ca4c16d-2ad7-47d4-8c05-12d938b47bb2",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b41dad38-7f49-4a86-bf77-4d6dbdfcd631",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8cdd2c2e-3f92-4846-a726-32b1e20a9135",
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        192,
+        1536
+      ],
+      "id": "af5f6338-1d29-440c-ae7f-ad4ac19d0125",
+      "name": "Switch"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        192,
+        3520
+      ],
+      "id": "45dcfff9-3f1d-45d9-b6ba-3f4b694095c4",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        192,
+        3744
+      ],
+      "id": "aac8ba37-9a57-4fd7-a81d-5fe207db46e5",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "sum",
+              "field": "pedidos"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        192,
+        3984
+      ],
+      "id": "7f0c07f4-9cbe-4cb9-ada6-173d416acecd",
+      "name": "Summarize"
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        192,
+        4240
+      ],
+      "id": "1d83b7f9-5ff3-4e63-be0b-ab8f3a8065f9",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        192,
+        4496
+      ],
+      "id": "81f21683-5f49-4f18-8e53-a4d1d40f8eea",
+      "name": "Remove Duplicates"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f4bf010d-300b-43d4-aa86-c86437f799df",
+              "name": "pAU",
+              "value": "={{ $json.pedidos[0].id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        192,
+        864
+      ],
+      "id": "32b844df-d225-4720-b7d9-09247a9c6fb7",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        192,
+        3312
+      ],
+      "id": "e7a89a67-0afe-4a51-a4c0-04f96c1b47c7",
+      "name": "Wait",
+      "webhookId": "eb3d8f06-ac83-4065-9b92-eb6cd1e4c89d"
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "7264d85c-f6a3-44be-b4ec-01006dc62058",
+  "meta": {
+    "instanceId": "d80a11a967cce5063d399c4a887c77d3aecc7bbe10b8634577a2d9d72fa372ff"
+  },
+  "nodeGroups": [],
+  "id": "jFJaT02XghvqcQnT",
+  "tags": [
+    {
+      "updatedAt": "2026-11-24T11:59:08.855Z",
+      "createdAt": "2026-09-19T13:58:15.308Z",
+      "id": "Giyt5rRqbzKTu3Db",
+      "name": "Luis.lpeces@gmail.com"
+    }
+  ]
+}

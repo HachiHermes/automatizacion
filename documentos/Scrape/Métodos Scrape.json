@@ -1,0 +1,255 @@
+{
+  "name": "Métodos Scrape",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "",
+        "height": 208,
+        "width": 448
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -448,
+        464
+      ],
+      "id": "8e87fb0a-6cd7-4c64-979c-024bdf081bbc",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "url": "https://asisttente.com/",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -384,
+        496
+      ],
+      "id": "ed137a5f-1cbd-4e4f-b455-7db0024b45fe",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "texto",
+              "cssSelector": "body"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.html",
+      "typeVersion": 1.2,
+      "position": [
+        -160,
+        496
+      ],
+      "id": "215ab259-869d-4b7a-a161-0590a00b5777",
+      "name": "HTML"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 208,
+        "width": 256,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        112,
+        464
+      ],
+      "id": "8df9ee94-1de4-4a4c-9c1b-b2959eb5fb46",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.markdown }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "Información",
+              "description": "=servicios"
+            }
+          ]
+        },
+        "options": {
+          "systemPromptTemplate": "# Tarea\n\nTu trabajo consiste en extraer información únicamente sobre servicios"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        64,
+        832
+      ],
+      "id": "56b9f94b-0c7f-4923-b9e6-53f30a9f90a1",
+      "name": "Information Extractor",
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        336,
+        832
+      ],
+      "id": "d76e377b-618c-41c4-9396-5a877df8d480",
+      "name": "OpenAI"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 208,
+        "width": 480,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        784
+      ],
+      "id": "a2af49f0-a111-4938-b527-0eaf07e64648",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "operation": "scrape",
+        "url": "https://asisttente.com/",
+        "requestOptions": {}
+      },
+      "type": "@mendable/n8n-nodes-firecrawl.firecrawl",
+      "typeVersion": 1,
+      "position": [
+        192,
+        512
+      ],
+      "id": "d588049e-d68f-435a-85d3-d6c1eb3a3821",
+      "name": "Firecrawl",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 208,
+        "width": 448,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        480,
+        464
+      ],
+      "id": "7096c5a0-6061-424c-a6ca-5b942c38e764",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "actorId": {
+          "__rl": true,
+          "value": "aYG0l9s7dbB7j3gbS",
+          "mode": "list",
+          "cachedResultName": "Website Content Crawler (apify/website-content-crawler)",
+          "cachedResultUrl": "https://console.apify.com/actors/aYG0l9s7dbB7j3gbS/input"
+        },
+        "customBody": "{\n  \"startUrls\": [\n    {\n      \"url\": \"https://asisttente.com/\"\n    }\n  ],\n  \"crawlerType\": \"cheerio\",\n  \"maxPagesPerCrawl\": 1,\n  \"maxCrawlingDepth\": 0,\n  \"maxConcurrency\": 1,\n  \"blockMedia\": true,\n  \"saveHtml\": false,\n  \"saveMarkdown\": true,\n  \"saveFiles\": false,\n  \"saveScreenshots\": false,\n  \"useSitemaps\": false,\n  \"respectRobotsTxtFile\": true,\n  \"proxyConfiguration\": {\n    \"useApifyProxy\": true\n  },\n  \"removeElementsCssSelector\": \"nav, footer, script, style, noscript, svg, img\",\n  \"aggressivePrune\": true\n}\n",
+        "timeout": {}
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        544,
+        512
+      ],
+      "id": "8ab58601-4710-4497-9008-a25d1eb8bfb3",
+      "name": "Run an Actor",
+      "credentials": {}
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "datasetId": "={{ $json.defaultDatasetId }}"
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        752,
+        512
+      ],
+      "id": "8ac317ce-6b37-40a7-b944-bf5e933de250",
+      "name": "Get Dataset Items",
+      "credentials": {}
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run an Actor": {
+      "main": [
+        [
+          {
+            "node": "Get Dataset Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "fea35121-ccdc-4bed-9064-ce46617323ca",
+  "meta": {
+    "instanceId": "d80a11a967cce5063d399c4a887c77d3aecc7bbe10b8634577a2d9d72fa372ff"
+  },
+  "nodeGroups": [],
+  "id": "mvlCabIJR9IKFTqS",
+  "tags": [
+    {
+      "updatedAt": "2026-11-24T11:59:08.855Z",
+      "createdAt": "2026-09-19T13:58:15.308Z",
+      "id": "Giyt5rRqbzKTu3Db",
+      "name": "Luis.lpeces@gmail.com"
+    }
+  ]
+}

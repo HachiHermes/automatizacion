@@ -1,0 +1,1411 @@
+{
+  "name": "Categorías de Nodos",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "base",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -1856,
+        768
+      ],
+      "id": "a8c7aeb2-3025-43b8-bd7b-e6b8c8b654ba",
+      "name": "Airtable"
+    },
+    {
+      "parameters": {
+        "resource": "calendar",
+        "calendar": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -1632,
+        576
+      ],
+      "id": "db9315d1-9a58-41b5-91b3-74d88fd57a87",
+      "name": "Google Calendar"
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        -1408,
+        576
+      ],
+      "id": "efa1b69c-75db-4305-9994-67d5fa134887",
+      "name": "Google Drive"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.shopify",
+      "typeVersion": 1,
+      "position": [
+        -1408,
+        1120
+      ],
+      "id": "34e4331b-980e-4678-b5e6-2700ac6498d7",
+      "name": "Shopify"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.payPal",
+      "typeVersion": 1,
+      "position": [
+        -1632,
+        1120
+      ],
+      "id": "a45290a8-bb5b-477e-b6ab-42843aa244f2",
+      "name": "PayPal"
+    },
+    {
+      "parameters": {
+        "resource": "customer",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.wooCommerce",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        1120
+      ],
+      "id": "e5ff4ba2-4997-4112-af5b-e5ac651c3863",
+      "name": "WooCommerce"
+    },
+    {
+      "parameters": {
+        "resource": "company",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        -1632,
+        768
+      ],
+      "id": "89423c0b-3e49-4de8-86c1-f45d6d305886",
+      "name": "HubSpot"
+    },
+    {
+      "parameters": {
+        "resource": "account",
+        "operation": "addNote",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.salesforce",
+      "typeVersion": 1,
+      "position": [
+        -1408,
+        768
+      ],
+      "id": "9b5b8127-e6c5-4aca-8576-4df104dd2941",
+      "name": "Salesforce"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.zohoCrm",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        768
+      ],
+      "id": "bc1cc5d4-bed1-4344-8c47-c9308d6ba06d",
+      "name": "Zoho CRM"
+    },
+    {
+      "parameters": {
+        "resource": "spreadsheet",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        -1856,
+        576
+      ],
+      "id": "2a0c0824-920f-4922-8d83-ddc87194907e",
+      "name": "Google Sheets"
+    },
+    {
+      "parameters": {
+        "resource": "chat"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -1408,
+        944
+      ],
+      "id": "dcdb0a40-4b2c-4d98-996c-59a67cdd903d",
+      "name": "Telegram",
+      "webhookId": "5e6bd777-5bdb-4051-8bab-fc81823b2ecb"
+    },
+    {
+      "parameters": {
+        "guildId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [
+        -1200,
+        944
+      ],
+      "id": "ddc1f702-f37c-4a5e-a81b-869de4fbee20",
+      "name": "Discord",
+      "webhookId": "04bac325-fbde-4978-a2c3-ed8580fb186e"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.stripe",
+      "typeVersion": 1,
+      "position": [
+        -1856,
+        1120
+      ],
+      "id": "67dcbe00-7661-4558-83c2-b64b1425f901",
+      "name": "Stripe"
+    },
+    {
+      "parameters": {
+        "operation": "addLabels"
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -1200,
+        576
+      ],
+      "id": "9d32a600-6570-477f-b1f7-b7aa6d99de42",
+      "name": "Gmail",
+      "webhookId": "bb63e1ec-4bdb-4c88-9785-f26ece74b166"
+    },
+    {
+      "parameters": {
+        "content": "## CONEXIONES",
+        "height": 800,
+        "width": 880,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1920,
+        528
+      ],
+      "id": "d41580ba-840d-4c10-966f-2dd92136dcab",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFile",
+        "fileToWatch": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        }
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        944
+      ],
+      "id": "b2abd7eb-11b8-4846-a750-4c921ab0fbaa",
+      "name": "Google Drive Trigger"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {}
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -336,
+        944
+      ],
+      "id": "aa8d583d-62b6-4eef-9189-fe234bf0516f",
+      "name": "Gmail Trigger",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "V411GoK9a1Dsexxh",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## TRIGGERS\n\nUn trigger (o disparador) es una acción o evento que inicia automáticamente un proceso o flujo de trabajo. Funciona como un interruptor que, cuando ocurre una condición específica, activa una serie de pasos predefinidos.\n\n\nPor ejemplo, en un chatbot de WhatsApp con n8n, un trigger podría ser cuando un usuario envía un mensaje, lo que haría que el chatbot responda automáticamente. \n\n\n\n\n\n\n\n\n\n\n\n\n\nOtros: Más Triggers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWebhook Trigger: Este Trigger activa el flujo de trabajo cuando recibe una solicitud HTTP externa. Es útil para recibir datos de aplicaciones externas o cuando quieres que tu flujo de trabajo comience al recibir información desde un servicio web\n\n\n\n\n\n\n\n\n\n\n\n\n\nTrigger Manual: Este Trigger activa el flujo de trabajo manualmente al hacer click. Esto permite ejecutar el flujo bajo demanda, ideal para pruebas o procesos que quieres controlar manualmente.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSchedule Trigger: Este Trigger activa el flujo de trabajo en intervalos de tiempo predefinidos (Cada minuto, hora, día, etc...)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhen Chat Message Receive: Este Trigger activa el flujo de trabajo cuando se recibe un mensaje del chat \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExecute Worklow Trigger: Este Trigger permite ejecutar otro flujo de trabajo de n8n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nForm Trigger: Este Trigger activa el flujo de trabajo cuando se rellena un formulario creado en n8n\n\n\n\n\n\n\n\n\n\n\n\n\n\nError Trigger: Este Trigger activa el flujo de trabajo automáticamente cuando ocurre un error en otro flujo. Es útil para gestionar fallos, enviar notificaciones o registrar incidencias.\n",
+        "height": 2208,
+        "width": 840,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -768,
+        528
+      ],
+      "id": "2a2c5833-b245-4c0c-9a64-07115b8ae920",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "eventsUi": {
+          "eventValues": [
+            {
+              "name": "conversation.deletion"
+            }
+          ]
+        },
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.hubspotTrigger",
+      "typeVersion": 1,
+      "position": [
+        -528,
+        944
+      ],
+      "id": "3e6e5ac0-c133-4230-b7f0-b18c39277cc0",
+      "name": "HubSpot Trigger",
+      "webhookId": "6bcba2c3-3a91-4ab3-8a0f-76572705c69e"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -432,
+        1648
+      ],
+      "id": "8b6f1315-ab6e-416b-bc71-4acf87211ee7",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -432,
+        2080
+      ],
+      "id": "904e05b2-45e4-4cea-bb0a-d8dcbe900998",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "formFields": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -432,
+        2304
+      ],
+      "id": "f193818c-fc51-454b-86a5-5c150711bddb",
+      "name": "On form submission",
+      "webhookId": "65e8e244-1942-432b-b27e-9ec132b7cc41"
+    },
+    {
+      "parameters": {
+        "content": "## AUXILIARES\n\nUn nodo auxiliar es una herramienta puntual que permite modificar los datos que recibimos entre una conexión u otra.\n\nExisten muchos nodos pero los más importantes son: \n\nCode: Permite ejecutar código personalizado en JavaScript o Python dentro del flujo de trabajo.\n\n\n\n\n\n\n\n\n\n\n\n\n\nSet (Edit Fields): Permite renombrar variables.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHTTP Request: Envía solicitudes HTTP a otras aplicaciones o servicios web. Te permite interactuar con APIs externas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIf: Evalúa una condición y bifurca el flujo hacia dos caminos: uno si la conexión es verdadera y otro si es falsa.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSwitch: Permite redirigir el flujo de trabajo por diferentes ramas según las reglas que definas.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFilter: Permite filtrar solamente los datos que nos interesan.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSplit Out: Divide un conjunto de datos en elementos individuales para procesarlos uno por uno.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAggregate: Toma múltiples elementos y los combina en uno solo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMerge: Combina datos de múltiples flujos en uno solo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLoop Over Items: Permite ejecutar una serie de acciones repetidamente sobre un conjunto de elementos.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLimit: Restringe el número de elementos que pasan a través de un flujo de trabajo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWait: Pausa la ejecución del flujo hasta que se cumpla una condición o pase un tiempo definido.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoOp: No realiza ninguna operación, solo pasa los datos al siguiente nodo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRespond to Webhook: Envía una respuesta personalizada a la petición HTTP que inició el flujo.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSummarize: Calcula métricas rápidas como totales, promedios, mínimos o máximos a partir de los datos.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMove Binary Data: Convierte datos entre formato binario y JSON para trabajar con archivos o APIs de texto.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRemove Duplicates: Elimina ítems duplicados dentro de un flujo de trabajo, comparando todos los campos o solo algunos específicos. También puede evitar procesar datos repetidos entre ejecuciones diferentes.\n",
+        "height": 4108,
+        "width": 720,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        384,
+        528
+      ],
+      "id": "2f649514-755e-4016-ade2-89812ef50ebb",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Genera 1 item con un array \"pedidos\"\nreturn [{\n  json: {\n    cliente: 'ACME Corp',\n    pedidos: [\n      { id: 101, importe: 99.99, estado: 'pendiente' },\n      { id: 102, importe: 149.50, estado: 'pagado' },\n      { id: 103, importe: 79.00,  estado: 'pendiente' },\n    ],\n  },\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        688,
+        736
+      ],
+      "id": "b73d9d84-6174-40fe-890e-44f66955e6e7",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4f17cb7b-2c92-408c-838a-dd0c1e35c078",
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "ho",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        688,
+        1840
+      ],
+      "id": "67e0f85a-1331-4e87-8c8d-974ac731f929",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        688,
+        2288
+      ],
+      "id": "f43afa9b-f52e-460f-96b7-e776a748859a",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "pedidos",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        688,
+        2064
+      ],
+      "id": "c6d2df1f-b5fd-42f1-a37f-13879978d410",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e6277da0-afeb-4eb1-8469-19a6ce0c9ef4",
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "o",
+              "operator": {
+                "type": "string",
+                "operation": "endsWith"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        688,
+        1408
+      ],
+      "id": "ce9d2266-1d30-4d24-a4d6-b4ff2fa69a9b",
+      "name": "If"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        688,
+        2528
+      ],
+      "id": "be72cdd8-8639-4d1e-b726-40c6b62499b3",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        688,
+        3056
+      ],
+      "id": "c7f12c32-a21f-4a0a-a026-c21ce25d1a73",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://n8n.asisttente.com/webhook/33d4204f-f106-475b-a96e-4c8c67140305",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        688,
+        1168
+      ],
+      "id": "18692738-2f4d-4dad-b490-8d2791272caa",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "content": "## INTELIGENCIA ARTIFICIAL",
+        "height": 2400,
+        "width": 2580,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1424,
+        528
+      ],
+      "id": "db3d2dd7-d92f-4a5b-b3e8-a8490c5ee9bd",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1712,
+        816
+      ],
+      "id": "625dcece-6013-4a2b-8e45-f8014033d9b3",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        2368,
+        688
+      ],
+      "id": "6b7ce987-8634-44c9-a2d5-b27b95bf3983",
+      "name": "Window Buffer Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryMotorhead",
+      "typeVersion": 1.3,
+      "position": [
+        2656,
+        688
+      ],
+      "id": "5c3e090a-60ee-4822-92f4-a0c94a0d4f5d",
+      "name": "Motorhead"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        2928,
+        688
+      ],
+      "id": "e9323860-6de8-4219-bec7-26db7e39405d",
+      "name": "Postgres Chat Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.4,
+      "position": [
+        3088,
+        688
+      ],
+      "id": "b8305313-9d94-481e-8f5b-ca8dd64e961c",
+      "name": "Redis Chat Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryXata",
+      "typeVersion": 1.4,
+      "position": [
+        2784,
+        688
+      ],
+      "id": "65ba8b5f-7aa0-4f4c-8eb7-2fada9c7aeb7",
+      "name": "Xata"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryZep",
+      "typeVersion": 1.3,
+      "position": [
+        2512,
+        688
+      ],
+      "id": "31f264de-da36-475f-850e-c566c5377a4d",
+      "name": "Zep"
+    },
+    {
+      "parameters": {
+        "content": "MEMORIA",
+        "height": 240,
+        "width": 940,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2304,
+        608
+      ],
+      "id": "4b02c8e6-7010-43df-a779-dd3a0a54fe4c",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.2,
+      "position": [
+        2544,
+        960
+      ],
+      "id": "f8ceb4bd-7b31-4d40-877c-3ba18961c32d",
+      "name": "Anthropic Chat Model1"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAzureOpenAi",
+      "typeVersion": 1,
+      "position": [
+        3792,
+        960
+      ],
+      "id": "e6cd0d7a-4a75-4993-9a4f-24012f212a6c",
+      "name": "Azure OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAwsBedrock",
+      "typeVersion": 1,
+      "position": [
+        3616,
+        960
+      ],
+      "id": "d527d261-d1f2-48dc-87a9-562d67b5010f",
+      "name": "AWS Bedrock Chat Model"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        3232,
+        960
+      ],
+      "id": "1ad03f05-acb5-4bb5-b9cc-7ff4ff680639",
+      "name": "DeepSeek Chat Model"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2368,
+        960
+      ],
+      "id": "6b5e796c-1608-4dec-9af3-d51753cb068a",
+      "name": "Google Gemini Chat Model"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        2704,
+        960
+      ],
+      "id": "9f6f3439-3c46-4951-9613-2be9a8e1caa8",
+      "name": "Groq Chat Model"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        2896,
+        960
+      ],
+      "id": "c79480f6-ee18-4739-b26e-769c30cf5f86",
+      "name": "Mistral Cloud Chat Model"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        3072,
+        960
+      ],
+      "id": "c670cc5c-ecdc-4f1d-bdfd-6a647f0770c2",
+      "name": "Ollama Chat Model"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3408,
+        960
+      ],
+      "id": "eff17e6e-e944-4be7-8b1a-0d911a801fdb",
+      "name": "OpenAI Chat Model"
+    },
+    {
+      "parameters": {
+        "content": "LLM: MODELOS DE LENGUAJE",
+        "height": 240,
+        "width": 1660,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2304,
+        880
+      ],
+      "id": "a47477ac-42c5-4415-88a5-6fda7af4cdcf",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "HERRAMIENTAS\n\n\nOtras: Drive, Gmail, etc...\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVector Store Tool: Almacena y gestiona datos en forma de vectores para búsquedas o análisis avanzados.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCall n8n Workflow: Llama a otro flujo de trabajo de n8n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode Tool: Ejecuta fragmentos de código personalizado\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCalculadora: Para operaciones matemáticas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWikipedia: Realizar una búsqueda en wikipedia\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSerpAPI: Realizar búsquedas de Google y obtener resultados en tiempo reals",
+        "height": 1640,
+        "width": 720,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        2288,
+        1168
+      ],
+      "id": "0840b62c-304a-4b4e-be09-cdfdcdf02528",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "AGENTES DE IA\n\nUn AI Agent es un asistente inteligente que puede tomar decisiones y realizar tareas de forma autónoma basándose en reglas, datos o inteligencia artificial.\n\nPor ejemplo, un AI Agent en n8n podría analizar mensajes de clientes, interpretar su intención y responder automáticamente o redirigir la consulta a la persona adecuada. Funciona como un ayudante digital que piensa y actúa según lo programado.",
+        "height": 440,
+        "width": 740,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1488,
+        608
+      ],
+      "id": "ba741ccc-10d0-4733-b262-bfbafdaaa968",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "NODOS\n\nQuestion and Answer Chain: Realiza preguntas y responde basándose en la información proporcionada.\n\nPor ejemplo, un AI Agent en n8n podría analizar mensajes de clientes, interpretar su intención y responder automáticamente o redirigir la consulta a la persona adecuada. Funciona como un ayudante digital que piensa y actúa según lo programado.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBasic LLM Chain: Utiliza un modelo de lenguaje (LLM) para procesar texto y generar respuestas\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nText Classifier: Clasifica textos según categorías predefinidas utilizando IA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInformation Extractor: Extrae datos importantes o específicos de un texto\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSentiment Analysis: Analiza el sentimiento de un texto, indicando si es positivo, negativo o neutral.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSummarization Chain: Resume un texto largo para proporcionar la información clave.",
+        "height": 1700,
+        "width": 740,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1488,
+        1104
+      ],
+      "id": "5eab4e8c-3ec2-4311-b81a-5f33b9cb5f89",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
+      "typeVersion": 1.4,
+      "position": [
+        1712,
+        1280
+      ],
+      "id": "554e791d-5ae6-4b5b-a7ed-440aff7c83b1",
+      "name": "Question and Answer Chain"
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {},
+            {}
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.5,
+      "position": [
+        1712,
+        1536
+      ],
+      "id": "a63f3b1b-8e32-4262-b943-d0f4666559e9",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "categories": {
+          "categories": [
+            {},
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textClassifier",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        1808
+      ],
+      "id": "fc11a6ec-d5f0-4903-8c32-1dd5086ea4de",
+      "name": "Text Classifier"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.sentimentAnalysis",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        2336
+      ],
+      "id": "f53f55ff-a384-480d-a335-73d6d398ae5f",
+      "name": "Sentiment Analysis"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        2080
+      ],
+      "id": "83be0e8a-f3bf-4c0f-8836-7048c89876de",
+      "name": "Information Extractor"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainSummarization",
+      "typeVersion": 2,
+      "position": [
+        1712,
+        2608
+      ],
+      "id": "63f9f1bd-e5c2-494c-bc8b-6ad645c5aa69",
+      "name": "Summarization Chain"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1,
+      "position": [
+        2512,
+        1536
+      ],
+      "id": "12391ee7-9cd8-4903-8932-ac481596dd8a",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        2592,
+        1792
+      ],
+      "id": "ca336f19-b2be-47d2-ac8a-ecc9aec2b204",
+      "name": "Call n8n Workflow Tool"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.1,
+      "position": [
+        2592,
+        2048
+      ],
+      "id": "51913e8b-283d-42bd-a1e8-a419ce611ba3",
+      "name": "Code Tool"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        2592,
+        2464
+      ],
+      "id": "2f4aa70a-0694-4a40-99a1-842f69951c1a",
+      "name": "Wikipedia"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        2592,
+        2256
+      ],
+      "id": "22c2b9f2-1272-47a7-9904-affe9302262a",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolSerpApi",
+      "typeVersion": 1,
+      "position": [
+        2592,
+        2672
+      ],
+      "id": "3f9d1d9a-2099-433a-b08e-ea32ff299f96",
+      "name": "SerpAPI"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        2544,
+        1280
+      ],
+      "id": "dc490a96-571f-4c3b-a1d7-3f2e81d782b3",
+      "name": "Gmail1",
+      "webhookId": "3b1aa5dd-be7f-4ef4-b70d-004e3e5b1509"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        -528,
+        736
+      ],
+      "id": "ced44068-849a-493a-b2a8-71affacc157f",
+      "name": "WhatsApp Trigger",
+      "webhookId": "92095478-5138-4e1e-9637-5c5ecce01f7d"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -288,
+        736
+      ],
+      "id": "f7c53c8c-594b-452f-9f67-923746613f66",
+      "name": "Telegram Trigger",
+      "webhookId": "bb9c9296-19a6-40b8-b649-158b24db088a"
+    },
+    {
+      "parameters": {
+        "event": "order.created"
+      },
+      "type": "n8n-nodes-base.wooCommerceTrigger",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        944
+      ],
+      "id": "19e89c9e-627a-4625-8939-6ff21fa91198",
+      "name": "WooCommerce Trigger",
+      "webhookId": "4c436caa-4fcd-4211-9072-df59fc16f47c"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        688,
+        944
+      ],
+      "id": "54bd7464-5f67-49f6-80f8-af21385f9ef4",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        688,
+        2800
+      ],
+      "id": "2eb40502-caa3-4f55-9553-c3c92991c42b",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "f790ad73-8a05-4305-a912-83ae6fbd41cb"
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        688,
+        1616
+      ],
+      "id": "1f062d78-0b64-403d-ae99-822270ff49a2",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "documentURL": "1EXO6awc258gL319jpXN_NF2LrLMYMtH8tG2A0tOmCPY"
+      },
+      "type": "n8n-nodes-base.googleDocsTool",
+      "typeVersion": 2,
+      "position": [
+        2688,
+        1280
+      ],
+      "id": "4ae6262c-cc28-4abe-9909-7f6e299776c2",
+      "name": "Docs"
+    },
+    {
+      "parameters": {
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultName": "/ (Root folder)"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTool",
+      "typeVersion": 3,
+      "position": [
+        2400,
+        1280
+      ],
+      "id": "535c15c9-f0fd-4deb-93c4-41ce23d457ea",
+      "name": "Drive"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IwC4jXuOvYiQfRdatlNen7lHrpU80lHDfzNNXFaKFGo",
+          "mode": "list",
+          "cachedResultName": "Características Perros",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IwC4jXuOvYiQfRdatlNen7lHrpU80lHDfzNNXFaKFGo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 227866817,
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IwC4jXuOvYiQfRdatlNen7lHrpU80lHDfzNNXFaKFGo/edit#gid=227866817"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [
+        2832,
+        1280
+      ],
+      "id": "f753d5b0-7617-4583-b059-d191f1d090a6",
+      "name": "Sheets"
+    },
+    {
+      "parameters": {
+        "content": "OTROS",
+        "height": 400,
+        "width": 720,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        3216,
+        2384
+      ],
+      "id": "6f98a697-3c39-4cad-9bac-9514b6212913",
+      "name": "Sticky Note16"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        3648,
+        2528
+      ],
+      "id": "34d351f5-a65a-4a41-a2b4-d09c35f02089",
+      "name": "Generate audio"
+    },
+    {
+      "parameters": {
+        "operation": "send",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        -1632,
+        944
+      ],
+      "id": "6db4f961-7591-43e3-b4e8-f8fea1dbe27a",
+      "name": "Send message",
+      "webhookId": "dbcda7d1-b853-4a83-9dfb-475b774a0f65"
+    },
+    {
+      "parameters": {
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [
+        -1856,
+        944
+      ],
+      "id": "abb86af4-c4a3-4d9e-919d-ad63efb0d6d9",
+      "name": "Create a post"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -432,
+        1408
+      ],
+      "id": "97410655-25b7-4098-a7c1-e746205b9c6d",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -432,
+        1840
+      ],
+      "id": "33689808-d06b-4a33-80b6-e447b11211eb",
+      "name": "When chat message received",
+      "webhookId": "5df0ea2a-3d8f-4b88-bd34-3f085cd5309e"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "33d4204f-f106-475b-a96e-4c8c67140305",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -432,
+        1184
+      ],
+      "id": "800a37ab-4ad4-4820-9ed1-e61de1bbf222",
+      "name": "Webhook",
+      "webhookId": "33d4204f-f106-475b-a96e-4c8c67140305"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        688,
+        3296
+      ],
+      "id": "7922b2c3-ce25-4230-be67-7ef388fcca2b",
+      "name": "Wait",
+      "webhookId": "eb3d8f06-ac83-4065-9b92-eb6cd1e4c89d"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        688,
+        3504
+      ],
+      "id": "2d99de00-e9d5-4b58-89ae-1c6bd299cefc",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        688,
+        3728
+      ],
+      "id": "615c33e8-3f7a-4652-879f-e6e4bb146b7a",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        688,
+        3968
+      ],
+      "id": "4d44f77f-2b53-4546-8545-d490bece3399",
+      "name": "Summarize"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        688,
+        4224
+      ],
+      "id": "85b7ea15-3c44-41d5-8529-5d78075fc1a8",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        688,
+        4480
+      ],
+      "id": "2f745e50-e2ac-44ea-be72-eb5e49e1fd7b",
+      "name": "Remove Duplicates"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        3408,
+        2528
+      ],
+      "id": "4fbcd45e-e4d5-4af1-bde0-6331941434ce",
+      "name": "Analyze audio"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -416,
+        2560
+      ],
+      "id": "93d03289-d21e-448a-a2c8-d75043856199",
+      "name": "Error Trigger"
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "7d6b9f64-e4ab-43cd-849d-644ea443ae11",
+  "meta": {
+    "instanceId": "d80a11a967cce5063d399c4a887c77d3aecc7bbe10b8634577a2d9d72fa372ff"
+  },
+  "nodeGroups": [],
+  "id": "RqWcCBilvKBe3nQC",
+  "tags": [
+    {
+      "updatedAt": "2026-11-24T11:59:08.855Z",
+      "createdAt": "2026-09-19T13:58:15.308Z",
+      "id": "Giyt5rRqbzKTu3Db",
+      "name": "Luis.lpeces@gmail.com"
+    }
+  ]
+}

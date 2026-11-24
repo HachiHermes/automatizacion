@@ -1,0 +1,135 @@
+{
+  "name": "HTTP Request",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 🌐 APIs Públicas para Pruebas (Sin Credenciales)\n\nAquí tienes algunas APIs abiertas para hacer pruebas rápidas con tu nodo **HTTP Request**:\n\n- **JSONPlaceholder** → Datos falsos de prueba  \n  - `https://jsonplaceholder.typicode.com/posts`  \n  - `https://jsonplaceholder.typicode.com/users`\n\n- **Reqres** → Simula usuarios y login  \n  - `https://reqres.in/api/users`\n\n- **Dog CEO API** 🐶 → Foto aleatoria de perro  \n  - `https://dog.ceo/api/breeds/image/random`\n\n- **The Cat API** 😺 → Foto aleatoria de gato  \n  - `https://api.thecatapi.com/v1/images/search`\n\n- **Open Meteo** 🌦 → Clima actual sin API Key  \n  - `https://api.open-meteo.com/v1/forecast?latitude=40.4168&longitude=-3.7038&current_weather=true`\n\n\n👉 Todas estas funcionan **sin credenciales** y soportan distintos métodos (GET, POST, PUT, DELETE).  \nPerfectas para aprender y testear tu flujo. 🚀",
+        "height": 592,
+        "width": 576
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        576,
+        400
+      ],
+      "id": "cd81c3b5-0f4d-404e-8035-a71ad0c81cf2",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.thecatapi.com/v1/votes",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "DEMO-API-KEY"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"image_id\": \"b1\",\n  \"value\": 1\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        48,
+        768
+      ],
+      "id": "801c0e6f-da01-411e-b90c-e321b718caf3",
+      "name": "HTTP Request #2"
+    },
+    {
+      "parameters": {
+        "url": "=https://cdn2.thecatapi.com/images/{{ $json.image_id }}.jpg",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "DEMO-API-KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        288,
+        768
+      ],
+      "id": "c6793a52-b6a6-4b71-8a4a-9b01e630a10d",
+      "name": "HTTP Request #3"
+    },
+    {
+      "parameters": {
+        "url": "https://api.thecatapi.com/v1/images/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "4"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "DEMO-API-KEY"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        48,
+        512
+      ],
+      "id": "52a3cadb-56c4-4e7d-8b09-168bd65d8639",
+      "name": "HTTP Request #"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "HTTP Request #2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request #3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "0b8ff4a3-aca5-4fae-bc77-d304e5bd4506",
+  "meta": {
+    "instanceId": "d80a11a967cce5063d399c4a887c77d3aecc7bbe10b8634577a2d9d72fa372ff"
+  },
+  "nodeGroups": [],
+  "id": "j9M86DOSvtM2mmK0",
+  "tags": [
+    {
+      "updatedAt": "2026-11-24T11:59:08.855Z",
+      "createdAt": "2026-09-19T13:58:15.308Z",
+      "id": "Giyt5rRqbzKTu3Db",
+      "name": "Luis.lpeces@gmail.com"
+    }
+  ]
+}

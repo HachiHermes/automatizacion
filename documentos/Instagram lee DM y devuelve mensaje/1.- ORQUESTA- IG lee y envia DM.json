@@ -1,0 +1,359 @@
+{
+  "name": "1.- ORQUESTA- IG lee y envia DM",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "17016d62-1c77-4c0c-8062-276d344b544d",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -5792,
+        2320
+      ],
+      "id": "473d9523-c0b2-4a16-a941-49281c3d1f14",
+      "name": "Webhook",
+      "webhookId": "17016d62-1c77-4c0c-8062-276d344b544d"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const data = item.json;\n  const entry = data.body?.entry?.[0] || {};\n  \n  // Detección de los dos posibles arrays\n  const messagingEvent = entry.messaging?.[0];\n  const changeEvent = entry.changes?.[0];\n\n  // Estructura base unificada con todos los campos\n  const result = {\n    eventType: 'unknown',\n    senderId: null,\n    username: null,\n    recipientId: null,\n    text: null,\n    timestamp: null,\n    // Específicos de DM\n    messageId: null,\n    // Específicos de Comentarios / Reels\n    commentId: null,\n    mediaId: null,\n    mediaProductType: null,\n    field: null\n  };\n\n  if (messagingEvent) {\n    // 1. Mensaje Directo (DM)\n    result.eventType = 'direct_message';\n    result.senderId = messagingEvent.sender?.id || null;\n    result.recipientId = messagingEvent.recipient?.id || entry.id || null;\n    result.text = messagingEvent.message?.text || null;\n    result.messageId = messagingEvent.message?.mid || null;\n    result.timestamp = messagingEvent.timestamp || entry.time || null;\n\n  } else if (changeEvent) {\n    // 2. Comentario en Reel / Publicación\n    const value = changeEvent.value || {};\n    \n    result.eventType = 'reel_comment';\n    result.field = changeEvent.field || 'comments';\n    result.senderId = value.from?.id || null;\n    result.username = value.from?.username || null;\n    result.recipientId = entry.id || null;\n    result.text = value.text || null;\n    result.commentId = value.id || null;\n    result.mediaId = value.media?.id || null;\n    result.mediaProductType = value.media?.media_product_type || null;\n    \n    // Normalización de timestamp: si viene en segundos (10 dígitos), se convierte a ms\n    const rawTime = entry.time || null;\n    result.timestamp = (rawTime && rawTime < 10000000000) ? rawTime * 1000 : rawTime;\n  }\n\n  return { json: result };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5392,
+        2320
+      ],
+      "id": "d21070d9-f791-42b5-b1c9-b6310a9754ec",
+      "name": "Extraer comentarios1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. Obtiene el texto de forma segura, garantizando que siempre sea un string\nlet rawText = '';\ntry {\n  rawText = $('Extraer comentarios1').first()?.json?.text || $json.text || '';\n} catch (e) {\n  rawText = $json.text || '';\n}\n\n// Forzamos conversión a string para que null o undefined se conviertan en cadena vacía\nconst textoEntrada = String(rawText || '').trim();\n\n// 2. Si no hay texto, devolvemos sin fallar\nif (!textoEntrada) {\n  return {\n    json: {\n      ...$json,\n      PETICION: null\n    }\n  };\n}\n\n// 3. Normaliza quitando tildes/acentos (guía -> guia, vídeo -> video, misión -> mision)\nconst textoLimpio = textoEntrada\n  .normalize('NFD')\n  .replace(/[\\u0300-\\u036f]/g, '');\n\n// 4. Busca coincidencia de palabra completa (case-insensitive)\nconst match = textoLimpio.match(/\\b(guia|video|seguridad|mision)\\b/i);\n\n// 5. Mapea la coincidencia a su formato oficial en mayúsculas\nlet peticion = null;\nif (match) {\n  const encontrada = match[1].toLowerCase();\n  if (encontrada === 'guia') peticion = 'GUIA';\n  else if (encontrada === 'video') peticion = 'VIDEO';\n  else if (encontrada === 'seguridad') peticion = 'SEGURIDAD';\n  else if (encontrada === 'mision') peticion = 'MISION';\n}\n\nreturn {\n  json: {\n    ...$json,\n    PETICION: peticion\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -5184,
+        2320
+      ],
+      "id": "3545af8c-04b9-4e4d-8dc2-81ab382849ac",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "0a4b4778-6f30-44d0-b7d2-c65ca8306029",
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -5008,
+        2320
+      ],
+      "id": "a1d6ba63-6aba-4e00-b16f-f1d11768932b",
+      "name": "If texto = null"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.instagram.com/v25.0/me/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer IGAAUL0NtIh6lBZAGFxaW5EMURqQUJIczZA6XzJ0RmdZAN09wakZAXRS1MajRud1gyLUdIbU9NS1FyWnh3YkFxLTRkS3dzVVdpc01VZAldXT25iS1RmVHdnbmFSY3paXzlPQWZAHQ1BWRTVValFUSWw0TDAydF8zbDV6MnJaM3FRRmxXMAZDZD"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $('Extraer comentarios1').item.json.senderId }}\"\n  },\n  \"message\": {\n    \"text\": \"Holaaa! 😊 Soy el asistente de LUIS.\\nHe visto q has comentado \\\"{{ $('Extraer comentarios1').item.json.text.toLowerCase().trim().replace(/\\\"/g, '\\\\\"') }}\\\" Ante todo te agradezco tu asistencia a la charla y te felicito porque hoy vas a aprender muchas cosas interesantes para tu día a día como son las AUTOMATIZACIONES\"\n  }\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -4512,
+        2304
+      ],
+      "id": "b92d0275-c771-4cce-8c4c-1fdc9f92aa8c",
+      "name": "Respode MISION SEGURIDAD",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\n  \"parameters\": {\n    \"options\": {},\n    \"responseCode\": 200,\n    \"responseData\": \"{{ JSON.stringify({status: 'ok', message: 'Webhook recibido correctamente'}) }}\",\n    \"responseHeaders\": {\n      \"Content-Type\": \"application/json\"\n    },\n    \"responseMode\": \"onReceived\"\n  },\n  \"type\": \"n8n-nodes-base.respondToWebhook\",\n  \"typeVersion\": 1.5,\n  \"position\": [-5600, 2304],\n  \"id\": \"respond-inmediato\",\n  \"name\": \"Responder 200 Inmediato\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -5584,
+        2320
+      ],
+      "id": "fcd122a9-877c-4cd3-8706-22da98eb3594",
+      "name": "Responder 200 Inmediato"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -5744,
+        2016
+      ],
+      "id": "948adacf-8c1b-4ecf-b100-8262555e3cce",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1L9Geicw5Kzd7P7aOk06rrkwxu3whzfPemY_P4kLIIQw",
+          "mode": "list",
+          "cachedResultName": "Orquestada - AcademyVERSO - BBDD",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L9Geicw5Kzd7P7aOk06rrkwxu3whzfPemY_P4kLIIQw/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1L9Geicw5Kzd7P7aOk06rrkwxu3whzfPemY_P4kLIIQw/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha ": "={{ $('Code in JavaScript2').item.json.timestamp }}",
+            "Texto DM": "={{ $('Code in JavaScript2').item.json.text }}",
+            "identificador": "={{ $('Code in JavaScript2').item.json.senderId }}"
+          },
+          "matchingColumns": [
+            "Fecha "
+          ],
+          "schema": [
+            {
+              "id": "Fecha ",
+              "displayName": "Fecha ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "identificador",
+              "displayName": "identificador",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Texto DM",
+              "displayName": "Texto DM",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -4736,
+        2304
+      ],
+      "id": "0e083be9-f910-4820-aaec-f44379a5d5f3",
+      "name": "Append or update row in sheet",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "SEYXPyux2zqm40m0",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n-7spw.srv1593613.hstgr.cloud",
+            "user-agent": "facebookexternalua",
+            "content-length": "394",
+            "accept": "*/*",
+            "accept-encoding": "deflate, gzip",
+            "content-type": "application/json",
+            "instagram-api-version": "v26.0",
+            "x-forwarded-for": "2a03:2880:ff:44::",
+            "x-forwarded-host": "n8n-7spw.srv1593613.hstgr.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "srv1593613",
+            "x-hub-signature": "sha1=51617a633cdb41d41e932a2459dfbc0dcec52faf",
+            "x-hub-signature-256": "sha256=15425bb09b9a60da9986b352a61986472d488ff408a543a475329fdb52d4fa22",
+            "x-real-ip": "2a03:2880:ff:44::"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "object": "instagram",
+            "entry": [
+              {
+                "time": 1795520310175,
+                "id": "17841448742575542",
+                "messaging": [
+                  {
+                    "sender": {
+                      "id": "985563507307853"
+                    },
+                    "recipient": {
+                      "id": "17841448742575542"
+                    },
+                    "timestamp": 1795520309680,
+                    "message": {
+                      "mid": "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDQ4NzQyNTc1NTQyOjM0MDI4MjM2Njg0MTcxMDMwMTI0NDI1ODM0NzU4NzcxMTk2NTAwNzozMzEyMTUwMzYzMTgyNzExMTk2OTQzOTk0NDY4MDY2OTE4NAZDZD",
+                      "text": "Hola"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "webhookUrl": "https://n8n-7spw.srv1593613.hstgr.cloud/webhook/17016d62-1c77-4c0c-8062-276d344b544d",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Responder 200 Inmediato",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extraer comentarios1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "If texto = null",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If texto = null": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Respode MISION SEGURIDAD": {
+      "main": [
+        []
+      ]
+    },
+    "Responder 200 Inmediato": {
+      "main": [
+        [
+          {
+            "node": "Extraer comentarios1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "Append or update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Respode MISION SEGURIDAD",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "ae3ab0e5-c44d-49d0-9bd8-1f96d5db68aa",
+  "meta": {
+    "instanceId": "d80a11a967cce5063d399c4a887c77d3aecc7bbe10b8634577a2d9d72fa372ff"
+  },
+  "nodeGroups": [],
+  "id": "ff5TXxFYZqn1UMf2",
+  "tags": []
+}

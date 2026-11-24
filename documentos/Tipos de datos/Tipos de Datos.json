@@ -1,0 +1,179 @@
+{
+  "name": "Tipos de Datos",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Tipos de Datos\n\n- **El String o texto**, que se representa con el símbolo de las letras `\"AB\"`.\n\n- **El Number o número**, con el símbolo de la almohadilla `#`.\n\n- **El Boolean o verdadero/falso**, con la casilla marcada ☑️.\n\n- **El Array o lista**, con el símbolo de una lista 📋.\n\n- **Y el Object u Objeto**, con un pequeño cubo 🧩.\n",
+        "height": 272,
+        "width": 528
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        640,
+        496
+      ],
+      "id": "3394e028-ab87-44ae-b01d-b5d4d80bad39",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      persona: {\n        nombre: \"Ana\",\n        edad: 28,\n        cliente: true\n      },\n      // Acceder a un valor\n      nombrePersona: { nombre: \"Ana\", edad: 28 }.nombre, // \"Ana\"\n      edadPersona: { nombre: \"Ana\", edad: 28 }.edad      // 28\n    }\n  }\n];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        752
+      ],
+      "id": "72cea23a-39b5-49a9-9682-2a3c06d84d5c",
+      "name": "Objetos"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      numeros: [1, 2, 3, 4, 5],\n      textos: [\"Ana\", \"Luis\", \"Pepe\"],\n      mixto: [1, \"Hola\", true],\n      // Acceder al primer elemento\n      primerNumero: [1, 2, 3][0], // 1\n      segundoTexto: [\"Ana\", \"Luis\", \"Pepe\"][1] // Luis\n    }\n  }\n];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -48,
+        752
+      ],
+      "id": "5b7df9c3-348c-40f6-a6ae-994abf470617",
+      "name": "Listas"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      numero1: 10,\n      numero2: 5,\n      suma: 10 + 5,       // 15\n      resta: 10 - 5,      // 5\n      multiplicacion: 10 * 5, // 50\n      division: 10 / 5,   // 2\n      decimal: 10 / 3     // 3.333...\n    }\n  }\n];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        32,
+        592
+      ],
+      "id": "16b23598-0928-4a2a-bb3a-aede28d02430",
+      "name": "Número"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      texto_numero: \"123\",     // string\n      numero_real: 123,        // number\n      suma_texto: \"123\" + 10,  // concatena → \"12310\"\n      suma_numero: 123 + 10,   // suma → 133\n      // Cómo convertir string a número:\n      suma_tras_convertir: Number(\"123\") + 10 // → 133\n    }\n  }\n];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        176,
+        448
+      ],
+      "id": "80e9b6f6-918c-4ccc-ad8f-8c27cdce184e",
+      "name": "Texto"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      esMayor: 10 > 5,   // true\n      esMenor: 10 < 5,   // false\n      comparacion1: \"Hola\" === \"Hola\", // true\n      comparacion2: \"Hola\" === \"Adios\" // false\n    }\n  }\n];\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        592
+      ],
+      "id": "68965573-9694-4db8-b057-5b27d73dd242",
+      "name": "Booleano"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e28f1972-37f3-41c9-b4bc-59a0e026ec0a",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        48,
+        976
+      ],
+      "id": "c795d0da-09a9-49b0-a119-631634817e4a",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "18689845-b7bc-4e48-ad7c-618f018e1173"
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        304,
+        976
+      ],
+      "id": "1bff0ba2-34e4-4d5c-8461-25ff1d803fb2",
+      "name": "Switch"
+    }
+  ],
+  "pinData": {},
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "2a9ca653-76f3-4635-ab32-a047a813ca6e",
+  "meta": {
+    "instanceId": "d80a11a967cce5063d399c4a887c77d3aecc7bbe10b8634577a2d9d72fa372ff"
+  },
+  "nodeGroups": [],
+  "id": "WHUkjJbPkb9KN5Gs",
+  "tags": [
+    {
+      "updatedAt": "2026-11-24T11:59:08.855Z",
+      "createdAt": "2026-09-19T13:58:15.308Z",
+      "id": "Giyt5rRqbzKTu3Db",
+      "name": "Luis.lpeces@gmail.com"
+    }
+  ]
+}
